@@ -1,0 +1,18 @@
+<!-- Loop over each object in the projects array -->
+<div class="card-deck">
+{{#each projects as |project| }}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://via.placeholder.com/286x180.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{project.name}}</h5>
+    {{project.description}}
+    </div>
+    <div class="card-footer">
+    <p class="card-text">Created by {{project.user.name}} on {{format_date project.date_created}}</p>
+    <a href="/project/{{project.id}}" class="btn btn-primary">{{project.name}}</a>
+    </div>
+  </div>
+{{/each}}
+</div>
+
+
