@@ -26,5 +26,3 @@ User.hasMany(Comment, {
 Wine.hasMany(Comment, {
     foreignKey: 'Wine_id'
 });
-
-module.exports = {User, Wine, Comment};
