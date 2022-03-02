@@ -5,11 +5,10 @@
         <h2>Welcome, {{name}}!</h2>
       </div>
     </div>
-
+    
     <div class="row mt-4">
       <div class="col-md-6">
         <h3>Create a New Collection:</h3>
-
         <form class="form new-project-form">
           <div class="form-group">
             <label for="project-name">Wine Bottle Name:</label>
@@ -36,23 +35,28 @@
           </div>
         </form>
       </div>
-
       {{#if projects.length}}
       <div class="col-md-6 project-list">
         <h3>Current Wines:</h3>
-          <div style="width: 400px; margin: 20px auto 20px auto;">
-            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-              <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear"
-                  title="Clear Image">&times;</a></label>
-              <label class="custom-file-container__custom-file">
-                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*"
-                  aria-label="Choose File">
-                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                <span class="custom-file-container__custom-file__custom-file-control"></span>
-              </label>
-              <div class="custom-file-container__image-preview"></div>
-            </div>
-          </div>
+		<form ref='uploadForm' 
+			id='uploadForm' 
+			action='/upload' 
+			method='post' 
+			encType="multipart/form-data">
+				<input type="file" name="sampleFile" />
+				<input type='submit' value='Upload!' />
+		</form>		
+
+          {{!-- <div class="custom-file-container" data-upload-id="myFirstImage">
+                <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                <label class="custom-file-container__custom-file">
+                    <input type="file" class="custom-file-container__custom-file__custom-file-input" id="customFile" accept="image/*" aria-label="Choose File">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview"></div>
+            </div> --}}
+
         {{#each projects as |project|}}
         <div class="row mb-2">
           <div class="col-md-8">
