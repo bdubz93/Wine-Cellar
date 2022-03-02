@@ -1,3 +1,7 @@
+
+
+
+
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -6,6 +10,9 @@ const newFormHandler = async (event) => {
   const description = document.querySelector('#project-desc').value.trim();
   const winetype = document.querySelector('#project-winetype').value.trim();
   const wineage = document.querySelector('#project-wineage').value.trim();
+  // const image = document.querySelector('#custom-file-container__image-preview').value.trim();
+
+// console.log(detail.cachedFileArray.cachedFileArray);
 
   if (name && needed_funding && description && winetype && wineage ) {
     const response = await fetch(`/api/projects`, {
@@ -23,29 +30,7 @@ const newFormHandler = async (event) => {
     }
   }
 };
-// const newFormHandler = async (event) => {
-//   event.preventDefault();
 
-//   const name = document.querySelector('#project-name').value.trim();
-//   const needed_funding = document.querySelector('#project-funding').value.trim();
-//   const description = document.querySelector('#project-desc').value.trim();
-
-//   if (name && needed_funding && description) {
-//     const response = await fetch(`/api/projects`, {
-//       method: 'POST',
-//       body: JSON.stringify({ name, needed_funding, description }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert('Failed to create project');
-//     }
-//   }
-// };
 
 
 const delButtonHandler = async (event) => {

@@ -2,7 +2,7 @@
 <div class="card-deck">
 {{#each projects as |project| }}
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="https://via.placeholder.com/286x180.png" alt="Card image cap">
+  <img class="card-img-top" src="{{project.image}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{project.name}}</h5>
     {{project.description}}
