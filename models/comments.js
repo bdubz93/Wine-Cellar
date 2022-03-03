@@ -29,7 +29,7 @@ Comment.init(
       // },
       comment: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       comment_id: {
         type: DataTypes.INTEGER,
