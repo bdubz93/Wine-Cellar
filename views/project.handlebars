@@ -1,18 +1,72 @@
 <div class="card">
-<div class="card-body">
-<div class="text-center">
-  <img src="{{image}}" alt="Card image cap" width="400" 
-     height="500" /></p>
-  <h2>{{name}}</h2>
-  <p>Type: {{winetype}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    Price: {{needed_funding}}
-  </p>
-  <p>
-    <button class="btn btn-primary">Leave a comment</button>
-  </p>
-</div>
-</div>
-</div>
+    <div class="row">
+      <div class="col-auto">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+        </div>
+        <div class="card m-2">
+          <div class="card-body">
+            <div class="card-header">
+            <h2>{{name}}</h2>
+            </div>
+            <br>
+            <p class="list-group-item"><span style="font-weight:bold">Wine Type: </span>{{winetype}}</p>
+            <p class="list-group-item"><span style="font-weight:bold">Description: </span>{{description}}</p>
+            <p class="list-group-item"><span style="font-weight:bold">Created by: </span>{{user.name}} on {{format_date date_created}}</p>
+            <p class="list-group-item">
+            <span style="font-weight:bold">Price: </span>{{needed_funding}}
+            </p>
+          </div>
+        </div> <img class="ml-5" src="{{image}}" alt="Card image cap" width="300" height="400" />
+
+      </div>
+      <div class="col-md-6">
+        <div class="card m-2">
+          <div class="card-body">
+            <div class="card-header">
+            <h2>Comments:</h2>
+            </div>
+            <br>
+            <div class="row mb-2">
+              <div class="col-md-8">
+                <p>This is a sample comment</p>
+                <p>Brandon on {{format_date date_created}}</p>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="delete">DELETE</button>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-8">
+                <p>This is a sample comment</p>
+                <p>Brandon on {{format_date date_created}}</p>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="delete">DELETE</button>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-8">
+                <p>This is a sample comment</p>
+                <p>Brandon on {{format_date date_created}}</p>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="delete">DELETE</button>
+              </div>
+            </div>
+            <form class="form comment-form">
+              <div class="form-group">
+                <label for="comment-text">Comment:</label>
+                <textarea class="form-input" id="comment-text" name="comment-text"></textarea>
+              </div>
+            </form>
+            <p>
+              <button type="submit" class="btn btn-primary">Leave a comment</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
