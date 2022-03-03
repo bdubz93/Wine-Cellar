@@ -19,18 +19,25 @@ Comment.init(
           key: 'id'
         }
       },
-      wine_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'wine',
-          key: 'id'
-        }
-      },
+      // wine_id: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   references: {
+      //     model: 'wine',
+      //     key: 'id'
+      //   }
+      // },
       comment: {
         type: DataTypes.TEXT,
         allowNull: false,
-      }
+      },
+      comment_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'project',
+          key: 'id',
+        },
+      },
   },
   {
     sequelize,
