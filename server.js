@@ -7,12 +7,16 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const sess = {
   secret: 'Super secret secret',
@@ -24,36 +28,34 @@ const sess = {
   })
 };
 
+app.use(session(sess));
 
-// default options
+
 app.use(fileUpload());
 
-
-app.post('/upload', function(req, res) {
-  let sampleFile;
-  let uploadPath;
-
-  if (!req.files || Object.keys(req.files).length === 0) {
-    res.status(400).send('No files were uploaded.');
-    return;
+app.post('/upload', async (req, res) => {
+  const {name, data} = req.files.pic;
+  if (name && data) {
+      await sequelize.create({name: name, img: data}).into('img');
+      res.sendStatus(200);
+  } else {
+      res.sendStatus(400);
   }
+})
 
-  console.log('req.files >>>', req.files); // eslint-disable-line
+app.get('/img/:id', async (req, res) => {
+  const id = req.params.id;
+  const img = await sequelize('img').where({id: id}).first();
+  if (img) {
+      const contentType = await FileType.fromBuffer(img.img); // get the mimetype of the buffer (in this case its gonna be jpg but can be png or w/e)
+      res.type(contentType.mime); // not always needed most modern browsers including chrome will understand it is an img without this
+      res.end(img.img);
+  } else {
+      res.end('No Img with that Id!');
+  }
+})
 
-  sampleFile = req.files.sampleFile;
 
-  uploadPath = __dirname + '/uploads/' + sampleFile.name;
-
-  sampleFile.mv(uploadPath, function(err) {
-    if (err) {
-      return res.status(500).send(err);
-    }
-
-    console.log("image uploaded");
-  });
-});
-
-app.use(session(sess));
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);

@@ -20,6 +20,10 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // new
     wineage: {
       type: DataTypes.FLOAT,
@@ -37,10 +41,10 @@ Project.init(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false
-  },
+  //   image: {
+  //     type: DataTypes.STRING,
+  //     allowNull: false
+  // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

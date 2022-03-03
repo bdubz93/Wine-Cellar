@@ -1,7 +1,3 @@
-
-
-
-
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -10,14 +6,15 @@ const newFormHandler = async (event) => {
   const description = document.querySelector('#project-desc').value.trim();
   const winetype = document.querySelector('#project-winetype').value.trim();
   const wineage = document.querySelector('#project-wineage').value.trim();
+  const image = document.querySelector('#project-image').value.trim();
   // const image = document.querySelector('#custom-file-container__image-preview').value.trim();
 
 // console.log(detail.cachedFileArray.cachedFileArray);
 
-  if (name && needed_funding && description && winetype && wineage ) {
+  if (name && needed_funding && description && winetype && wineage && image) {
     const response = await fetch(`/api/projects`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description, wineage, winetype }),
+      body: JSON.stringify({ name, needed_funding, description, wineage, winetype, image }),
       headers: {
         'Content-Type': 'application/json',
       },
