@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -32,8 +32,8 @@ router.get('/project/:id', async (req, res) => {
     const projectData = await Project.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: Comment,
+          attributes: ['comment'],
         },
       ],
     });
@@ -42,6 +42,85 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('project', {
       ...project,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const projectData = await Project.findAll({
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'user_id', 'comment', 'comment_id'],
+          include: {
+            model: Comment,
+            attributes: ['comment']
+          }
+        },
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+    // Serialize data so the template can read it
+    const projects = projectData.map((project) => project.get({ plain: true }));
+    // Pass serialized data and session flag into template
+    res.render('comments', {
+      projects,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/comments', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: Comment,
+          attributes: ['comment'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const comment = commentData.map((project) => project.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('comments', { 
+      comment, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+router.get('/comments/:id', async (req, res) => {
+  try {
+    const projectData = await Comment.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: ['comment'],
+        },
+      ],
+    });
+
+    const comment = projectData.get({ plain: true });
+
+    res.render('comments', {
+      ...comment,
       logged_in: req.session.logged_in
     });
   } catch (err) {
