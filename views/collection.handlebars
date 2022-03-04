@@ -1,30 +1,52 @@
-<div class="card">
-<div class="card-body">
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-    <h2>Welcome, {{comment.id}}!</h2>
-  </div>
+{{!--
+<h2>Welcome, {{name}}!</h2>
+<h2>Welcome, {{comment.id}}!</h2>
+</div>
 </div>
 
-      {{#if projects.length}}
-      <div class="col-md-6 project-list">
-        <h3>Current Wines:</h3>
-        {{#each projects as |project|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-          </div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-          </div>
-          <div class="col-md-4">
-            <img src="{{image}}" alt="Card image cap" width="150" 
-     height="200" />
-          </div>
+{{#if projects.length}}
+<div class="project-list">
+  <h3>Current Wines:</h3>
+  {{#each projects as |project|}}
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{image}}" alt="Card image cap" width="150" height="200">
+    <div class="card-body">
+      <h5 class="card-title">{{project.name}}</h5>
+      {{project.description}}
+    </div>
+    <div class="card-footer">
+      <p class="card-text">Created on {{format_date project.date_created}}</p>
+      <a href="/project/{{project.id}}">{{project.name}}</a>
+    </div>
+  </div>
+</div>
+{{/each}}
+</div>
+{{/if}} --}}
+
+{{!-- <script src="./js/profile.js"></script> --}}
+
+{{#if projects.length}}
+
+<div class="container container-fluid mt-5">
+  <div class="flex-column mt-2">
+    <div class="card-columns">
+      {{#each projects as |project|}}
+      <div class="card" style="width:400px">
+        <img class="ml-5" src="{{image}}" alt="Card image cap" width="150" height="200" />
+        <div class="card-body">
+          <h5 class="card-title">{{project.name}}</h5>
+          {{project.description}}
         </div>
-        {{/each}}
+        <div class="card-footer">
+          <p class="card-text">Created on {{format_date project.date_created}}</p>
+          <a href="/project/{{project.id}}">{{project.name}}</a>
+        </div>
       </div>
-      {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+{{/if}} 
 
 <script src="./js/profile.js"></script>
