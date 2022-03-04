@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     Comment.findAll({
 
     })
-      .then(commentText => res.json(commentText))
+      .then(commentText => res.json({commentText}))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -34,7 +34,16 @@ router.get('/', (req, res) => {
 //     }
 //   });
 
+router.get('/:id', (req, res) => {
+    Comment.findByPk({
 
+    })
+      .then(commentText => res.json(commentText))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+});
 
 
 
