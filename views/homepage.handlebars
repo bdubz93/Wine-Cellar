@@ -1,6 +1,6 @@
 <!-- Loop over each object in the projects array -->
 <div class="slick">
-    {{#each (limit projects 3) as |project| }}
+    {{#each projects as |project| }}
     <div>
       <div class="card" style="width:400px">
         <img class="card-img-top" src="{{project.image}}" alt="Card image cap">
@@ -16,13 +16,4 @@
     </div>
     {{/each}}
 </div>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('.slick').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 500,
-      });
-    });
-  </script>
+
