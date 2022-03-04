@@ -46,3 +46,14 @@ body {
 }
 
 
+.home-img {
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 400px;
+}
+
+/* .home-card {
+  height: 800px; 
+  width: 400px; 
+} */
