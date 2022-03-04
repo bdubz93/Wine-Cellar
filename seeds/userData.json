@@ -1,7 +1,12 @@
 [
     {
-        "name": "Sal",
-        "email": "sal@hotmail.com",
+        "name": "Brandon",
+        "email": "brandon@mail.com",
+        "password": "password12345"
+      },
+      {
+        "name": "Alex",
+        "email": "alex@mail.com",
         "password": "password12345"
       }
 ]

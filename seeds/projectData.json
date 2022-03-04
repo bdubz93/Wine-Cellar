@@ -1,10 +1,28 @@
 [
     {
-        "name": "Music Near Me",
-        "winetype": "Pinot Noir",
-        "wineage": 28,
-        "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-        "needed_funding": 5000,
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+        "name": "Gaja Sito Moresco ",
+        "winetype": "Nebbiolo Blend",
+        "wineage": 2019,
+        "description": "Angelo Gaja is widely credited with introducing the use of barriques to Piedmont. His aim was to moderate the tannins in Nebbiolo and deliver fruitier, richer expressions, like the complex redcurrant, cassis, spice, savoury herbs and smoke in this poised blend of Nebbiolo, Cabernet and Merlot.",
+        "needed_funding": 74.95,
+        "image": "https://data.uritalianwines.com/imgprodotto/sito-moresco-laghe-dop_8843.jpg"
+      },
+      {
+        "name": "Girard Petite Sirah",
+        "winetype": "Petite Sirah",
+        "wineage": 2018,
+        "description": "The 2018 growing season was near-perfect, with ideal conditions throughout the final ripening period for the grapes. This robust, silky wine shows complex, concentrated dark fruit, vanilla, and savoury herbal notes, with oak spice and toast..",
+        "needed_funding": 132.65,
+        "image": "https://girard.imgix.net/common/images/products/gw-nv-petite-sirah-mainLg_nobg.png?auto=compress,format&h=550"
+      },
+      {
+        "name": "Niepoort Vertente Tinto",
+        "winetype": "Touriga Nacional Blend",
+        "wineage": 2017,
+        "description": "The 2017 Vertente is a field blend of grapes like Tinta Roriz and Touriga Franca aged for 20 months in 80% used French barriques. It comes in at 13% alcohol. This was set for bottling in about a week, but it was the final blend and out of cask.",
+        "needed_funding": 43.25,
+        "image": "https://cdn.shopify.com/s/files/1/2040/3839/products/niepoortvertente_2048x.gif?v=1554431402"
       }
 ]
+
+
