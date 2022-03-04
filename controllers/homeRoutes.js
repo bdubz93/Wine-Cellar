@@ -27,6 +27,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const commentData = await Comment.findAll({
+
+    });
+
+    // Serialize data so the template can read it
+    const commentTexts = commentData.map((project) => project.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      commentTexts, 
+      logged_in: req.session.logged_in 
+    });
+    console.log("something wasd done")
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
 router.get('/project/:id', async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
@@ -49,56 +75,20 @@ router.get('/project/:id', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+
+router.get('/comments', withAuth, async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'user_id', 'comment', 'comment_id'],
-          include: {
-            model: Comment,
-            attributes: ['comment']
-          }
-        },
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+    // Find the logged in user based on the session ID
+    const userData = await Comment.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Comment }],
     });
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
-    // Pass serialized data and session flag into template
+
+    const user = userData.get({ plain: true });
+
     res.render('comments', {
-      projects,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/comments', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const commentData = await Comment.findAll({
-      include: [
-        {
-          model: Comment,
-          attributes: ['comment'],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const comment = commentData.map((project) => project.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('comments', { 
-      comment, 
-      logged_in: req.session.logged_in 
+      ...user,
+      logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);

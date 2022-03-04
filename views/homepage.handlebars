@@ -1,17 +1,28 @@
 <!-- Loop over each object in the projects array -->
-<div class="card-columns">
-{{#each (limit projects 3) as |project| }}
-<div class="card" style="width:400px">
-  <img class="card-img-top" src="{{project.image}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{project.name}}</h5>
-    {{project.description}}
+<div class="slick">
+    {{#each (limit projects 3) as |project| }}
+    <div>
+      <div class="card" style="width:400px">
+        <img class="card-img-top" src="{{project.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{project.name}}</h5>
+          {{project.description}}
+        </div>
+        <div class="card-footer">
+          <p class="card-text">Created by {{project.user.name}} on {{format_date project.date_created}}</p>
+          <a href="/project/{{project.id}}" class="btn btn-primary">{{project.name}}</a>
+        </div>
+      </div>
     </div>
-    <div class="card-footer">
-    <p class="card-text">Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-    <a href="/project/{{project.id}}" class="btn btn-primary">{{project.name}}</a>
-    </div>
-  </div>
-{{/each}}
+    {{/each}}
 </div>
-
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.slick').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 500,
+      });
+    });
+  </script>
