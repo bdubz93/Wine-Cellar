@@ -28,14 +28,14 @@
         {{/if}}
       </nav>
     </header>
-    {{!-- <div class="flex-column mt-2"> --}}
+    <div class="flex-column mt-2">
       <main class="container">
         <!-- Render the sub layout -->
         {{{ body }}}
       </main>
       <footer>
       </footer>
-    {{!-- </div> --}}
+    </div>
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
@@ -57,7 +57,8 @@
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 500,
+        autoplaySpeed: 2000,
+        arrows: false,
       });
     });
   </script>
