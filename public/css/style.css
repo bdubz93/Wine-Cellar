@@ -89,3 +89,11 @@ a:active { text-decoration: none; }
 
 
 .no-button:active { text-decoration: none; }
+
+img {
+  display: block;
+  max-width:200px;
+  max-height:450px;
+  width: auto;
+  height: auto;
+}
