@@ -55,7 +55,6 @@ Free feel to approach me if you have any further questions or anything want to d
 - checkout Brandon [Github profile](https://github.com/bdubz93)
 - Contact Alex via [Email](mailto:cxz980314@gmail.com)
 - Contact Brondon via [Email](mailto:brandonwinkler@live.ca)
-)
 
 
 ## License
