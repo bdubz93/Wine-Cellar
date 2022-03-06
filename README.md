@@ -34,7 +34,9 @@ Wine cellar is an application that allows users to build their own wine inventor
 
 
 The following image is the sceenshot of application's appearance:
-![screen shot of the website](./assets/screenshot.png)
+![screen shot of the website](./assets/Image1.png)
+![screen shot of the website](./assets/Image2.png)
+![screen shot of the website](./assets/Image3.png)
 
 - [Deployed application](https://winecellar-app.herokuapp.com/)
 
