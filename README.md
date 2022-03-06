@@ -24,7 +24,8 @@ Wine cellar is an application that allows users to build their own wine inventor
 4. Run ``npm install`` will install all the packages you need.<br/>
 5. Log in to mysql terminal and run ``source schema.sql``
 6. Run ``node seed.js`` in node terminal to populate data
-7. Then you could invoke the application by using the following command: ``npm start``
+7. Add mysql sensitive information in ``.env`` file(username, password)
+8. Then you could invoke the application by using the following command: ``npm start``
 
 
 ## Usage
